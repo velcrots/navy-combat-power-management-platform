@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Sample 2D Mobile.sln"
+    "dotnet.defaultSolution": "navy-combat-power-management-platform-kim-jooseop2.sln"
 }
