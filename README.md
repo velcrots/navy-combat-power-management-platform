@@ -1,33 +1,13 @@
-# Republic of Korea Navy Training and Education Platform Project
-![image](https://github.com/velcrots/navy-combat-power-management-platform/assets/152903986/40954d4c-af96-4485-9e04-e0212f59cac5)
-
-Welcome to the repository for the development of an online platform tailored for the Republic of Korea Navy, featuring gamified elements for training and education. The primary objective of this project is to enhance combat readiness among naval personnel and foster active engagement in education and training initiatives.<br/>
-
-## Project Objectives
-* Design and develop a system architecture for an online platform specifically tailored to the needs of the Republic of Korea Navy.
-* Integrate gamified elements to motivate naval personnel to actively participate in education and training programs.
-* Implement visualization tools for combat readiness indices and an avatar system customized for naval personnel.
-* Provide a self-directed learning environment to personalize military training for Navy personnel.
-* Develop personnel management features to support Navy commanders in their roles.
-* Create educational content relevant to the Republic of Korea Navy's training objectives.
-* Incorporate features aimed at accident prevention and addressing military security concerns within the Navy.
-
-## Project Plan
-The project will progress according to the following TO-BE plan:<br/>
-
-* System setup and feature development tailored to the needs of the Republic of Korea Navy.
-* Implementation of combat readiness indices and avatar management system customized for naval personnel.
-* Provision of motivation and self-directed learning environment specific to Navy training.
-* Diversification and personalization of training content to align with the Republic of Korea Navy's requirements.
-* Addition of personnel management features designed to support Navy command structure.
-
-### How to Contribute
-If you'd like to contribute to the project, follow these steps:<br/>
-
-* Fork the repository.<br/>
-* Clone the repository locally: git clone https://github.com/your-username/your-repository.git<br/>
-* Make changes, commit them, and push to your fork: git commit -m "Enter your message" && git push origin main<br/>
-* Create a Pull Request.<br/>
-
-### License
-This project is licensed under the MIT License.<br/>
+main(master) 브랜치는 현재 배포가능한 버전으로 유지  
+  
+develop 브랜치에서는 여러 기능들을 개발한 각각 브랜치들을 merge 하여  
+배포가능한 버전이 되면 main(master)에 merge  
+  
+feature 브랜치에서는 develop에서 분기하여 개발하고 있는 기능들  
+브랜치 이름은 "feature/기능요약"을 추천  
+브랜치가 너무 많아질 수 있으므로 개발 완료하면 브랜치 삭제  
+  
+hotfix 브랜치에서는 main(master) 브랜치에서 버그 발견시 분기하여 빠르게 수정  
+수정 내용은 main(master)랑 develop 브랜치에 merge  
+브랜치 이름은 "hotfix-버전명"을 추천  
+  
