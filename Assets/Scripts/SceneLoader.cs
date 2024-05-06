@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     private string currentSceneName = null;
-    public void goToScene(SceneAsset sc)
+    public void goToScene(string sceneName)
     {
         currentSceneName = SceneManager.GetSceneAt(1).name;
-        SceneManager.LoadSceneAsync(sc.name, LoadSceneMode.Additive).completed += UnLoadPrevScene;
+        SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive).completed += UnLoadPrevScene;
         
     }
 
@@ -23,15 +23,41 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public void EndIntroScene(SceneAsset sc)
+    public void EndIntroScene()
     {
         currentSceneName = "IntroScene";
-        SceneManager.LoadSceneAsync(sc.name, LoadSceneMode.Additive).completed += UnLoadPrevScene;
+        SceneManager.LoadSceneAsync("SignUpScene", LoadSceneMode.Additive).completed += UnLoadPrevScene;
     }
 
-    private void Start() {
-
+    public void goToMainScene() {
+        goToScene("MainScene");
     }
-    private void Update() {
+
+    public void goToCPMScene() {
+        goToScene("CPMScene");
+    }
+
+    public void goToBoardScene() {
+        goToScene("BoardScene");
+    }
+
+    public void goToTrainingScene() {
+        goToScene("TrainingScene");
+    }
+
+    public void goToSMScene() {
+        goToScene("SMScene");
+    }
+
+    public void goToToDoScene() {
+        goToScene("ToDoScene");
+    }
+
+    public void goToFeedbackScene() {
+        goToScene("FeedbackScene");
+    }
+
+    public void goToSignUpScene() {
+        goToScene("SignUpScene");
     }
 }

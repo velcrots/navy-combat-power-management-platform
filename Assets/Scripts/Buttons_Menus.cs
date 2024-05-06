@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Buttons_Menus : MonoBehaviour
 {
-    [SerializeField] private SceneAsset _gameplayScene = default;
     public void goToScene(string sceneName)
     {
         //_gameplayScene.LoadSceneAsync(sceneName, LoadSceneMode.Additive, true, 0);
