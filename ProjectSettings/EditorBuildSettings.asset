@@ -6,29 +6,38 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SignUpScene.unity
+    path: Assets/Scenes/Initialization.unity
+    guid: 77e672834d1a0a64791da64fd3344bee
+  - enabled: 1
+    path: Assets/Scenes/Menus/IntroScene.unity
+    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/Scenes/Menus/SignUpScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Scenes/Menus/MainScene.unity
     guid: 2c4dbb23ca5b55044b323634580b2aeb
   - enabled: 1
-    path: Assets/Scenes/CPMScene.unity
+    path: Assets/Scenes/Menus/CPMScene.unity
     guid: d3b78251ed8095d4ebf2d8aab41312f0
   - enabled: 1
-    path: Assets/Scenes/BoardScene.unity
+    path: Assets/Scenes/Menus/BoardScene.unity
     guid: a98bf0d738c57ee4495cee30a8f56733
   - enabled: 1
-    path: Assets/Scenes/TrainingScene.unity
+    path: Assets/Scenes/Menus/TrainingScene.unity
     guid: 7dab07b6ecf886a4d9565d3793a6c06d
   - enabled: 1
-    path: Assets/Scenes/SMScene.unity
+    path: Assets/Scenes/Menus/SMScene.unity
     guid: 4a1e8e6955db45143aa731d993578a90
   - enabled: 1
-    path: Assets/Scenes/ToDoScene.unity
+    path: Assets/Scenes/Menus/ToDoScene.unity
     guid: 7e72f1af957d99e49a8e8d5209ed902f
   - enabled: 1
-    path: Assets/Scenes/FeedbackScene.unity
+    path: Assets/Scenes/Menus/FeedbackScene.unity
     guid: 3f534c2d43e562b41a5fafe81b9f742d
+  - enabled: 1
+    path: Assets/Scenes/Manager/PersistentManagers.unity
+    guid: 4273fd6fa430fc544bdabb89e92af802
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: d58d9111ab077b643a73a9487e9df579, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 841329ae7eafc3e4fa94f18ec17d7e75, type: 2}
