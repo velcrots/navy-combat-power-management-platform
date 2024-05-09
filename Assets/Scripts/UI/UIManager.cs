@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,44 +25,59 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
+        if(_instance == null){
+            _instance = this;
+
+            action = new UIInputActions();
+            action.UI.Cancel.performed += Cancel;
+        }
+        else{
+            Destroy(gameObject);
+        }
     }
 
     private Stack<UIPopup> openPopups = new Stack<UIPopup>();
     private Queue<UIPopup> pendingPopups = new Queue<UIPopup>(); // 예약된 팝업을 위한 큐
 
-    private void Update()
-    {
-        // 뒤로가기 키를 누르면 가장 최근에 열린 팝업을 닫습니다.
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            CloseLastOpenedPopup();
-        }
+    private UIInputActions action;
+
+    private void OnEnable() {
+        if(action != null)
+            action.UI.Enable();
+    } 
+    private void OnDisable() {
+        if(action != null)
+            action.UI.Disable();
     }
 
-    // 팝업을 엽니다.
+    // 취소키 누르면 최근 팝업 닫기
+    public void Cancel(InputAction.CallbackContext context){
+         CloseLastOpenedPopup();
+    }
+
+    private void Update()
+    {
+    }
+
+    // 팝업 열기
     public void OpenPopup(UIPopup popup)
     {
         if (popup != null)
         {      
-            // 새로운 팝업을 엽니다.
-            //UIUtilities.SetUIActive(popup.gameObject, true);
             popup.Open();
             openPopups.Push(popup);
         }
     }
 
-    // 팝업을 닫습니다.
+    // 팝업 닫기
     public void ClosePopup(UIPopup popup)
     {
         if (popup != null && openPopups.Contains(popup))
         {
-            // 팝업을 닫습니다.
-            //UIUtilities.SetUIActive(popup.gameObject, false);
             popup.Close();
             openPopups.Pop();
 
-            // 팝업이 닫힌 후 예약된 팝업이 있다면 엽니다.
+            // 예약 팝업 열기
             if (pendingPopups.Count > 0)
             {
                 OpenPopup(pendingPopups.Dequeue());
@@ -68,7 +85,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // 가장 최근에 열린 팝업을 닫습니다.
+    // 최근 팝업 닫기
     public void CloseLastOpenedPopup()
     {
         if (openPopups.Count > 0)
@@ -77,7 +94,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // 모든 열린 팝업을 닫습니다.
+    // 모든 열린 팝업 닫기
     public void CloseAllOpenPopups()
     {
         while (openPopups.Count > 0)
@@ -86,7 +103,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // 예약된 팝업을 추가합니다.
+    // 예약된 팝업 추가
     public void ReservePopup(UIPopup popup)
     {
         if (popup != null)

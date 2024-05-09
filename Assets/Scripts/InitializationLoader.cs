@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// 앱 실행시 초기 Scene Load
 public class InitializationLoader : MonoBehaviour
 {
     private string _managersScene = "PersistentManagers";

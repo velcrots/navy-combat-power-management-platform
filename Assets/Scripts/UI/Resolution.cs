@@ -10,7 +10,7 @@ public class Resolution : MonoBehaviour
     CanvasScaler canvasScaler;
 
     //Awake
-    
+    // 화면 비율 조정
     private void Update()
         {
         canvas = GetComponent<Canvas>();

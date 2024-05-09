@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class GameManager : MonoBehaviour
 {
-     private static GameManager _instance;
+    private static GameManager _instance;
 
     public static GameManager Instance
     {
@@ -22,6 +20,7 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+
     private void Awake()
     {
         if(_instance == null){
@@ -30,16 +29,32 @@ public class GameManager : MonoBehaviour
         else{
             Destroy(gameObject);
         }
-        
-        //Application.targetFrameRate = 60;
+#if UNITY_ANDROID && !UNITY_EDITOR
+        Application.targetFrameRate = 60;
+#endif
     }
+
+    private string currentSceneName = null;
+
+    public string getCurrnetSceneName(){
+        return currentSceneName;
+    }
+    public void setCurrnetSceneName(string sceneName){
+        currentSceneName = sceneName;
+    }
+
     void Start()
     {
-        //Application.targetFrameRate = 60;
     }
 
     void Update()
     {
+        /*
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        */
     }
 
     

@@ -7,30 +7,12 @@ public class Tabs_Achievements : MonoBehaviour
 {
     public Transform content;
 
-    public void clickTab1() {
+    public void clickTab(int n) {
         for (int i = 0; i < content.childCount; i++){
-            if(i == 0)
-                content.GetChild(i).gameObject.SetActive(true);
+            if(i == n)
+                UIUtilities.SetUIActive(content.GetChild(i).gameObject, true);
             else
-                content.GetChild(i).gameObject.SetActive(false);
-        }
-    }
-
-    public void clickTab2() {
-        for (int i = 0; i < content.childCount; i++){
-            if(i == 1)
-                content.GetChild(i).gameObject.SetActive(true);
-            else
-                content.GetChild(i).gameObject.SetActive(false);
-        }
-    }
-
-    public void clickTab3() {
-        for (int i = 0; i < content.childCount; i++){
-            if(i == 2)
-                content.GetChild(i).gameObject.SetActive(true);
-            else
-                content.GetChild(i).gameObject.SetActive(false);
+                UIUtilities.SetUIActive(content.GetChild(i).gameObject, false);
         }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
 
+// 피드백 데이터베이스에 저장하기
 public class Feedback : MonoBehaviour
 {
     public TMP_InputField userName;

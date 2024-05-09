@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// FPS 확인
 public class FpsStatus : MonoBehaviour
 {
     /*
@@ -25,5 +26,5 @@ public class FpsStatus : MonoBehaviour
 
         GUI.Label(position, text, style);
     }
-    */
+    //*/
 }

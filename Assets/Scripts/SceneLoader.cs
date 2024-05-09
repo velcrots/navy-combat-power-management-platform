@@ -7,25 +7,31 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private string currentSceneName = null;
+    private string prevSceneName = null;
     public void goToScene(string sceneName)
     {
-        currentSceneName = SceneManager.GetSceneAt(1).name;
+        if(Input.touchCount > 1)
+            return;
+        if(GameManager.Instance.getCurrnetSceneName().Equals(sceneName))
+            return;
+        prevSceneName = GameManager.Instance.getCurrnetSceneName();
+        GameManager.Instance.setCurrnetSceneName(sceneName);
         SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive).completed += UnLoadPrevScene;
         
     }
 
     private void UnLoadPrevScene(AsyncOperation operation)
     {
-        if(currentSceneName != null){
-            SceneManager.UnloadSceneAsync(currentSceneName);
-            currentSceneName = null;
+        if(prevSceneName != null){
+            SceneManager.UnloadSceneAsync(prevSceneName);
+            prevSceneName = null;
         }
     }
 
     public void EndIntroScene()
     {
-        currentSceneName = "IntroScene";
+        prevSceneName = "IntroScene";
+        GameManager.Instance.setCurrnetSceneName("SignUpScene");
         SceneManager.LoadSceneAsync("SignUpScene", LoadSceneMode.Additive).completed += UnLoadPrevScene;
     }
 

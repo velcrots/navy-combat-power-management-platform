@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// 에디터용 Scene ColdStart
 public class EditorColdStartup : MonoBehaviour
 {
 #if UNITY_EDITOR
@@ -14,19 +15,20 @@ public class EditorColdStartup : MonoBehaviour
     private void Awake() {
         if(!SceneManager.GetSceneByName(_managersScene.name).isLoaded){
             isColdStart = true;
+            SceneManager.LoadSceneAsync(_managersScene.name, LoadSceneMode.Additive).completed += LoadThisScene;
         }
     }
 
     private void Start() {
         if(isColdStart){
-            SceneManager.LoadSceneAsync(_managersScene.name, LoadSceneMode.Additive).completed += LoadThisScene;
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(0));
         }        
     }
 
     private void LoadThisScene(AsyncOperation operation)
         {
             SceneManager.LoadSceneAsync(_thisScene.name, LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(0));
+            GameManager.Instance.setCurrnetSceneName(_thisScene.name);
         }
 
 #endif
