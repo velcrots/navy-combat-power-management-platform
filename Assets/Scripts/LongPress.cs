@@ -6,7 +6,7 @@ using UnityEngine.EventSystems ;
 using UnityEngine.UI ;
 
 [RequireComponent(typeof(Button))]
-public class LongPress : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
+public class LongPress : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler {
 
     [Tooltip("길게 누르는 시간(초)")]
     [Range(0.3f, 5f)] public float holdDuration = 0.5f;
@@ -38,9 +38,6 @@ public class LongPress : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        if(!eventData.IsPointerMoving())
-            if(!isLongPressed)
-                onPress?.Invoke();
         isPointerDown = false;
         isLongPressed = false;
     }
@@ -57,6 +54,14 @@ public class LongPress : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
                 yield break;
             }
             yield return delay;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(!isLongPressed){
+            onPress?.Invoke();
+            Debug.Log("click");
         }
     }
 }

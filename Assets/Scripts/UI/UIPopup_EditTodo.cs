@@ -12,6 +12,7 @@ public class UIPopup_EditTodo : UIPopup
     private Mode mode;
     private TMP_InputField inputText;
     private TextMeshProUGUI selectedToDo;
+    private Button but;
 
     private string originString;
 
@@ -24,6 +25,9 @@ public class UIPopup_EditTodo : UIPopup
     private void OnEnable() {
         if(inputText==null)
             inputText = GetComponentInChildren<TMP_InputField>();
+        if(but==null)
+            but = GetComponentInChildren<Button>();
+        but.interactable = false;
     }
 
     // 저장할게 없으면 버튼 비활성화
@@ -48,9 +52,7 @@ public class UIPopup_EditTodo : UIPopup
         else if(mode == Mode.Edit){
             selectedToDo.text = inputText.text;
         }
-        originString = inputText.text;
         inputText.text = "";
-        but.interactable = false;
         UIManager.Instance.ClosePopup(this);
     }
 
@@ -68,6 +70,7 @@ public class UIPopup_EditTodo : UIPopup
         mode = Mode.Edit;
         this.selectedToDo = selectedToDo;
         inputText.text = selectedToDo.text;
+        originString = selectedToDo.text;
         UIManager.Instance.OpenPopup(this);
     }
 }
