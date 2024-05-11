@@ -6,7 +6,7 @@ public class UIPopup : MonoBehaviour
     [SerializeField] protected Animator popupAnimator; // 팝업 창의 애니메이터
 
     // 애니메이션 이벤트에서 호출할 메서드
-    public void OnCloseAnimationFinished()
+    virtual public void OnCloseAnimationFinished()
     {
         // 애니메이션 완료 후 팝업 캔버스 비활성화
         UIUtilities.SetUIActive(popupCanvas, false);

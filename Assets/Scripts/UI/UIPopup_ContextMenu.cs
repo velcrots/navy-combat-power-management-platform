@@ -6,6 +6,11 @@ public class UIPopup_ContextMenu : UIPopup
     public UIPopup_EditTodo popup_EditTodo;
     private GameObject selected;
 
+    public override void OnCloseAnimationFinished()
+    {
+        Destroy(transform.parent.gameObject);
+    }
+
     override public void Close()
     {
         if (popupCanvas != null)

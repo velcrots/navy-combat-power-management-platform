@@ -17,7 +17,7 @@ public class UIPopup_EditTodo : UIPopup
 
     private string originString;
     private int size = 0;
-    private int index = 0;
+    //private int index = 0;
 
     override public void Close()
     {
