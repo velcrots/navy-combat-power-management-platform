@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 
 public class UIPopup : MonoBehaviour
 {
@@ -45,6 +44,13 @@ public class UIPopup : MonoBehaviour
                 UIUtilities.SetUIActive(popupCanvas, false);
             }
         }
+    }
+
+    virtual public void InvokeOpen(){
+        UIManager.Instance.OpenPopup(this);
+    }
+    virtual public void InvokeClose(){
+        UIManager.Instance.ClosePopup(this);
     }
 
     // 팝업 내에서 어떤 동작을 수행할 때 호출될 메서드들을 추가

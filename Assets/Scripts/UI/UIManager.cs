@@ -52,7 +52,11 @@ public class UIManager : MonoBehaviour
 
     // 취소키 누르면 최근 팝업 닫기
     public void Cancel(InputAction.CallbackContext context){
-         CloseLastOpenedPopup();
+        if (openPopups.Count == 0)
+        {
+            Application.Quit();
+        }
+        CloseLastOpenedPopup();
     }
 
     private void Update()

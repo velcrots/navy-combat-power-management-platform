@@ -1,13 +1,10 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.Animations;
 
 public class UIPopup_ContextMenu : UIPopup
 {
-    [HideInInspector] private GameObject selected;
+    public UIPopup_EditTodo popup_EditTodo;
+    private GameObject selected;
 
     override public void Close()
     {
@@ -24,7 +21,7 @@ public class UIPopup_ContextMenu : UIPopup
         }
     }
 
-    // ContextMenu 열기
+    // ContextMenu 열기(포인터위치)
     public void OpenContextMenu(GameObject originalContextMenu)
     {
         GameObject copyContextMenu = Instantiate(originalContextMenu, Vector3.zero, Quaternion.identity);
@@ -36,6 +33,16 @@ public class UIPopup_ContextMenu : UIPopup
         copyContextMenu.transform.GetChild(1).position = copyUIPopup.selected.GetComponentInChildren<LongPress>().getMousePosition();
     }
 
+    // ContextMenu 열기(원점)
+    public void OpenContextMenuZero(GameObject originalContextMenu)
+    {
+        GameObject copyContextMenu = Instantiate(originalContextMenu, Vector3.zero, Quaternion.identity);
+        copyContextMenu.transform.SetParent(transform.parent.parent.transform, false);
+        UIPopup_ContextMenu copyUIPopup = copyContextMenu.GetComponentInChildren<UIPopup_ContextMenu>();
+        copyUIPopup.selected = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
+        UIManager.Instance.OpenPopup(copyUIPopup);
+    }
+
     // ContextMenu 닫기
     public void CloseContextMenu()
     {
@@ -45,6 +52,7 @@ public class UIPopup_ContextMenu : UIPopup
     // 할 일 삭제
     public void Delete()
     {
+        popup_EditTodo.DecreaseSize();
         Destroy(selected);
         UIManager.Instance.ClosePopup(this);
     }

@@ -61,7 +61,6 @@ public class LongPress : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, 
     {
         if(!isLongPressed){
             onPress?.Invoke();
-            Debug.Log("click");
         }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
 
 public enum Mode {Plus, Edit}
 
@@ -15,6 +16,8 @@ public class UIPopup_EditTodo : UIPopup
     private Button but;
 
     private string originString;
+    private int size = 0;
+    private int index = 0;
 
     override public void Close()
     {
@@ -41,17 +44,25 @@ public class UIPopup_EditTodo : UIPopup
     }
 
     // 할 일 저장
-    public void SaveToDo(Button but)
+    public void SaveToDo()
     {
         if(mode == Mode.Plus){
             GameObject copyToDo = Instantiate(originalToDo, new Vector3(0, 0, 0), Quaternion.identity);
             copyToDo.transform.SetParent(content, false);
             copyToDo.GetComponentInChildren<TextMeshProUGUI>().text = inputText.text;
             copyToDo.SetActive(true);
+            if(size==0){
+                content.transform.GetChild(1).gameObject.SetActive(false);
+            }
+            DataManager.Instance.data.addString(inputText.text);
+            size++;
         }
         else if(mode == Mode.Edit){
             selectedToDo.text = inputText.text;
+            DataManager.Instance.data.editString(0, inputText.text);
         }
+        
+        DataManager.Instance.SaveGameData();
         inputText.text = "";
         UIManager.Instance.ClosePopup(this);
     }
@@ -72,5 +83,12 @@ public class UIPopup_EditTodo : UIPopup
         inputText.text = selectedToDo.text;
         originString = selectedToDo.text;
         UIManager.Instance.OpenPopup(this);
+    }
+
+    public void DecreaseSize(){
+        size--;
+        if(size==0){
+            content.transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 }
