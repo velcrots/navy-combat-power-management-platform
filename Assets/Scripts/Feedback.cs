@@ -35,7 +35,7 @@ public class Feedback : MonoBehaviour
             }
             else{
                 Popup.SetActive(true);
-                Popup.transform.GetChild(0).GetChild(3).GetComponent<TextMeshProUGUI>().SetText(www.error);
+                Popup.transform.GetChild(3).GetComponent<TextMeshProUGUI>().SetText(www.error);
                 Debug.Log("error");
             }
         }
